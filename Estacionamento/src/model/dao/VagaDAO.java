@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model.dao;
 
 import model.bean.Vaga;
@@ -12,10 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author 04928683013
- */
 public class VagaDAO {
 
     public void create(Vaga v) {
@@ -23,7 +15,7 @@ public class VagaDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO vaga (numero, rua, obliqua) VALUES (?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO vaga (numero, rua, obliqua) VALUES (?, ?, ?)");
             stmt.setInt(1, v.getNumero());
             stmt.setString(2, v.getRua());
             stmt.setBoolean(3, v.isObliqua());
@@ -32,6 +24,7 @@ public class VagaDAO {
             JOptionPane.showMessageDialog(null, "Vaga salva com sucesso!");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao salvar: " + e);
+            
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }

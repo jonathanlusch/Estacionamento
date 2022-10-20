@@ -31,7 +31,7 @@ public static void closeConnection(Connection con) {
         if(con != null){
             con.close();
         } 
-    }catch (SQLException e) {
+    } catch (SQLException e) {
         throw new RuntimeException("Erro ao desconectar:", e);
     }
 }
