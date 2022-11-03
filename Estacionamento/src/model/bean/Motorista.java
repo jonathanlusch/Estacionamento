@@ -11,6 +11,7 @@ package model.bean;
  */
 
 public class Motorista {
+    private int IdMotorista;
     private String nome;
     private String genero;
     private int RG;
@@ -18,6 +19,14 @@ public class Motorista {
     private int celular;
     private String email;
     private String senha;
+
+    public int getIdMotorista() {
+        return IdMotorista;
+    }
+
+    public void setIdMotorista(int IdMotorista) {
+        this.IdMotorista = IdMotorista;
+    }
 
     public String getNome() {
         return nome;
