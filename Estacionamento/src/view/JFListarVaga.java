@@ -70,6 +70,11 @@ public class JFListarVaga extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTVaga);
 
         jBtnEditar.setText("Editar Vaga");
+        jBtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEditarActionPerformed(evt);
+            }
+        });
 
         jBtnCadastrar.setText("Cadastrar Vaga");
         jBtnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +150,17 @@ public class JFListarVaga extends javax.swing.JFrame {
         }    
         readJTable();
     }//GEN-LAST:event_jBtnExcluirActionPerformed
+
+    private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
+        if(jTVaga.getSelectedRow() != -1) {
+            int vagaSelecionada = (int)jTVaga.getValueAt(jTVaga.getSelectedRow(), 0);
+            JFAtualizarVaga av = new JFAtualizarVaga(vagaSelecionada);
+            av.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione uma vaga!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        readJTable();
+    }//GEN-LAST:event_jBtnEditarActionPerformed
    
     
     public void readJTable () {

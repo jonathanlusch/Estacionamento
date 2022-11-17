@@ -6,6 +6,8 @@ import model.dao.VagaDAO;
 
 public class JFAtualizarVaga extends javax.swing.JFrame {
 
+    private static int idVaga;
+    
     public JFAtualizarVaga(int idVaga) {
         initComponents();
         
@@ -179,7 +181,18 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
     }//GEN-LAST:event_jRBObliquaActionPerformed
 
     private void jBtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalvarActionPerformed
-
+        Vaga v = new Vaga();
+        VagaDAO vdao = new VagaDAO();
+        v.setIdVaga(Integer.parseInt(lblIdVaga.getText()));
+        v.setNumero(Integer.parseInt(jTFNumero.getText()));
+        v.setRua(jTFRua.getText());
+        if(jRBObliqua.isSelected()) {
+            v.setObliqua(true);
+        }else if(jRBParalela.isSelected()){
+            v.setObliqua(false);
+        }
+        
+        vdao.update(v);
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnSalvarActionPerformed
 
@@ -218,7 +231,8 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFAtualizarVaga().setVisible(true);
+                JFAtualizarVaga frame = new JFAtualizarVaga(idVaga);
+                frame.setVisible(true);
             }
         });
     }

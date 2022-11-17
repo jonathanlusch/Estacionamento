@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package view;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.dao.MotoristaDAO;
 import model.bean.Motorista;
+import model.dao.MotoristaDAO;
 
 /**
  *
@@ -118,23 +120,24 @@ public class JFListarMotorista extends javax.swing.JFrame {
         readJTable();
     }                                                      
     
-    public void readJTable () {
-            DefaultTableModel modelo = (DefaultTableModel) jTMotorista.getModel();
-            modelo.setNumRows(0);
-            MotoristaDAO dao = new MotoristaDAO();
-            for(Motorista m: dao.read()) {
-                modelo.addRow(new Object[]{
+    public void readJTable() {
+        DefaultTableModel modelo = (DefaultTableModel) jTMotorista.getModel();
+        modelo.setNumRows(0);
+        MotoristaDAO dao = new MotoristaDAO();
+
+        for (Motorista m : dao.read()) {
+            modelo.addRow(new Object[]{
                 m.getIdMotorista(),
                 m.getNome(),
-                m.getCPF(),
-                m.getRG(),
+                m.isHomem(),
+                m.getRg(),
+                m.getCpf(),
                 m.getCelular(),
                 m.getEmail()
             });
-                
-            }
-    } 
-         
+        }
+
+    }
     
     /**
      * @param args the command line arguments
@@ -175,7 +178,6 @@ public class JFListarMotorista extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
