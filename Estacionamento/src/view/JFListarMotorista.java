@@ -18,7 +18,7 @@ import model.dao.MotoristaDAO;
 public class JFListarMotorista extends javax.swing.JFrame {
 
     /**
-     * Creates new form JFListarMotorista
+     * Creates new form JFListarVaga
      */
     public JFListarMotorista() {
         initComponents();
@@ -33,38 +33,14 @@ public class JFListarMotorista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTMotorista = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jBtnCadastrar = new javax.swing.JButton();
         jBtnEditar = new javax.swing.JButton();
         jBtnExcluir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTMotorista = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTMotorista.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "IdMotorista", "Nome", "CPF", "RG", "Celular", "Email"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTMotorista);
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 30)); // NOI18N
-        jLabel1.setText("Listar Motorista");
 
         jBtnCadastrar.setText("Cadastrar Motorista");
         jBtnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,39 +50,74 @@ public class JFListarMotorista extends javax.swing.JFrame {
         });
 
         jBtnEditar.setText("Editar Motorista");
+        jBtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEditarActionPerformed(evt);
+            }
+        });
 
         jBtnExcluir.setText("Excluir Motorista");
+        jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnExcluirActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jLabel1.setText("Listar Motoristas");
+
+        jTMotorista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID do Motorista", "Nome", "Homem", "RG", "CPF", "Celular", "Email"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTMotorista);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBtnCadastrar)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(193, Short.MAX_VALUE)
+                        .addComponent(jBtnExcluir)
                         .addGap(18, 18, 18)
                         .addComponent(jBtnEditar)
                         .addGap(18, 18, 18)
-                        .addComponent(jBtnExcluir)))
-                .addContainerGap(152, Short.MAX_VALUE))
+                        .addComponent(jBtnCadastrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnCadastrar)
                     .addComponent(jBtnEditar)
-                    .addComponent(jBtnExcluir))
-                .addGap(269, 269, 269))
+                    .addComponent(jBtnExcluir)))
         );
 
         pack();
@@ -115,13 +126,50 @@ public class JFListarMotorista extends javax.swing.JFrame {
     private void jBtnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCadastrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnCadastrarActionPerformed
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
-        // TODO add your handling code here:
+
+    private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
+        if (jTMotorista.getSelectedRow() != -1) {
+            int motoristaSelecionado = (int) jTMotorista.getValueAt(jTMotorista.getSelectedRow(), 0);
+            JFAtualizarMotorista am = new JFAtualizarMotorista(motoristaSelecionado);
+            am.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um motorista!", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+        }
         readJTable();
-    }                                                      
+    }//GEN-LAST:event_jBtnEditarActionPerformed
+
+    private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+        // TODO add your handling code here:
+        if (jTMotorista.getSelectedRow() != -1) {
+            int opcao = JOptionPane.showConfirmDialog(
+                    null,
+                    "Deseja excluir o motorista selecionado?", "Exclusão",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (opcao == 0) {
+                MotoristaDAO dao = new MotoristaDAO();
+                Motorista m = new Motorista();
+
+                m.setIdMotorista((int) jTMotorista.getValueAt(jTMotorista.getSelectedRow(), 0));
+                dao.delete(m);
+            }
+        } else {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Selecione um motorista!","Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        readJTable();
+    }//GEN-LAST:event_jBtnExcluirActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
+        readJTable();
+    }            
     
     public void readJTable() {
-        DefaultTableModel modelo = (DefaultTableModel) jTMotorista.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jTMotorista.getModeL1();
         modelo.setNumRows(0);
         MotoristaDAO dao = new MotoristaDAO();
 
@@ -129,9 +177,9 @@ public class JFListarMotorista extends javax.swing.JFrame {
             modelo.addRow(new Object[]{
                 m.getIdMotorista(),
                 m.getNome(),
-                m.isHomem(),
-                m.getRg(),
-                m.getCpf(),
+                m.getGenero(),
+                m.getRG(),
+                m.getCPF(),
                 m.getCelular(),
                 m.getEmail()
             });
@@ -175,32 +223,7 @@ public class JFListarMotorista extends javax.swing.JFrame {
     }
 
     
-    /**
-     * @param args the command line arguments
-     */
-        
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFListarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFListarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFListarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFListarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    public static void Main(String args[]) {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
